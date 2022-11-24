@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('alunos', function (Blueprint $table) {
             $table->id();
+            $table->string('nome',50);
+            $table->date('dtNascto');
+            $table->string('telefone',13);
+            $table->string('responsavel',50);
+            $table->string('turma',10);
             $table->timestamps();
         });
     }
