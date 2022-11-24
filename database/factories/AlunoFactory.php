@@ -17,7 +17,13 @@ class AlunoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            //Insere dados nas colunas da tabela Aluno
+
+            'nome'=> $this->faker->name(),
+            'dtNascto'=> $this->faker->date('Y-m-d','2010-12-31'),
+            'telefone'=> $this->faker->e164PhoneNumber(),
+            'responsavel'=> $this->faker->name(),
+            'turma' => $this->faker->words()
         ];
     }
 }
