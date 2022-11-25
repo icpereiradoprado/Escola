@@ -19,5 +19,12 @@ Route::get('/', function () {
 });
 
 Route::prefix('aluno')->group(function(){
-    Route::get('',[AlunoController::class, 'index'])->name('funcionario.index');
+    Route::get('',[AlunoController::class, 'index'])->name('aluno.alunos');
+    Route::get('/create',[AlunoController::class, 'create'])->name('aluno.create');
+    Route::post('/store',[AlunoController::class, 'store'])->name('aluno.store');
+    Route::get('/{id}',[AlunoController::class, 'show'])->name('aluno.show');
+    Route::get('/{id}/edit',[AlunoController::class,'edit'])->name('aluno.edit');
+    Route::post('/{id}/update',[AlunoController::class,'update'])->name('aluno.update');
+    Route::get('/{id}/delete',[AlunoController::class,'destroy'])->name('aluno.delete');
+
 });

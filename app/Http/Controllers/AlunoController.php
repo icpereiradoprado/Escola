@@ -14,7 +14,8 @@ class AlunoController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $alunos = Aluno::all();
+        return view('aluno.alunos',['alunos'=>$alunos]);
     }
 
     /**
@@ -24,7 +25,7 @@ class AlunoController extends Controller
      */
     public function create()
     {
-        //
+        return view('aluno.create');
     }
 
     /**
@@ -35,18 +36,26 @@ class AlunoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Aluno::create([
+            'nome' => $request['nome'],
+            'dtNascto' => $request['dtNascto'],
+            'telefone' => $request['telefone'],
+            'turma' => $request['turma'],
+            'responsavel' => $request['responsavel']
+        ]);
+        return redirect()->route('aluno.alunos');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Aluno  $aluno
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Aluno $aluno)
+    public function show($id)
     {
-        //
+        $aluno = Aluno::find($id);
+        return view('aluno.show',['aluno' => $aluno]);
     }
 
     /**
