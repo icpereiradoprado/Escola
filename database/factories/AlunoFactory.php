@@ -23,7 +23,7 @@ class AlunoFactory extends Factory
             'dtNascto'=> $this->faker->date('Y-m-d','2010-12-31'),
             'telefone'=> $this->faker->e164PhoneNumber(),
             'responsavel'=> $this->faker->name(),
-            'turma' => $this->faker->words()
+            'turma' => $this->faker->word()
         ];
     }
 }

@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nome',50);
             $table->date('dtNascto');
-            $table->string('telefone',13);
+            $table->string('telefone',14);
             $table->string('responsavel',50);
-            $table->string('turma',10);
+            $table->string('turma',50);
             $table->timestamps();
         });
     }
