@@ -64,9 +64,10 @@ class AlunoController extends Controller
      * @param  \App\Models\Aluno  $aluno
      * @return \Illuminate\Http\Response
      */
-    public function edit(Aluno $aluno)
+    public function edit($id)
     {
-        //
+        $aluno = Aluno::find($id);
+        return view('aluno.edit',['aluno' => $aluno]);
     }
 
     /**
@@ -76,9 +77,15 @@ class AlunoController extends Controller
      * @param  \App\Models\Aluno  $aluno
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Aluno $aluno)
+    public function update(Request $request, $id)
     {
-        //
+        //atualiza os dados de uma linha no meu banco
+
+        $aluno = Aluno::find($id);
+        $aluno->fill($request->toArray());
+        $aluno->save();
+
+        return redirect()->route('aluno.alunos');
     }
 
     /**
@@ -87,8 +94,15 @@ class AlunoController extends Controller
      * @param  \App\Models\Aluno  $aluno
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Aluno $aluno)
+    public function destroy($id)
     {
-        //
+        //Remove uma linha do banco de dados
+        $aluno = Aluno::find($id);
+        $aluno->delete();
+        return redirect()->route('aluno.alunos');
+    }
+
+    public function login(Request $request){
+        
     }
 }

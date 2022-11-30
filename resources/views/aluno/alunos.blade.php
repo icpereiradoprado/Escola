@@ -10,7 +10,7 @@
         </div>
         <div class="py-2 border border-info">
             <div class="col-lg-12">
-                <a class="btn btn-outline-danger" href="{{route('aluno.create')}}">Novo</a>
+                <a class="btn btn-outline-primary" href="{{route('aluno.create')}}">Novo</a>
             </div>
             <div class="col-lg-12">
                 <table class="table table-striped">
@@ -35,9 +35,10 @@
                                 <td>{{$aluno->turma}}</td>
                                 <td>{{$aluno->responsavel}}</td>
                                 <td class="d-flex flex-wrap">
-                                    <a href="{{route('aluno.show',$aluno->id)}}" class="btn btn-outline-primary">Visualizar</a>
+                                    <a href="{{route('aluno.show',$aluno->id)}}" class="btn btn-outline-info">Visualizar</a>
                                     <a href="{{route('aluno.edit',$aluno->id)}}" class="btn btn-outline-success mx-2">Editar</a>
-                                    <a href="{{route('aluno.delete',$aluno->id)}}" class="btn btn-outline-danger">Deletar</a>
+                                    {{--  --}}
+                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Deletar</button>
                                 </td>
             
                             </tr>
@@ -45,6 +46,24 @@
                     </tbody>
                   </table>
             </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="d-flex justify-content-end p-3">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+           <div class="d-flex flex-column text-center p-5 pt-0 align-items-center">
+            <h2 class="fw-bold" id="exampleModalLabel" style="color: #dc3545; border-bottom: 1px solid #dc3545;">Deletar Aluno</h1>
+            <h3 class="fw-normal">Tem certeza que deseja deletar este aluno?</h2>
+           </div>
+            <div class="d-flex justify-content-center p-3">
+                <button type="button" class="btn btn-modal-cancel me-2" data-bs-dismiss="modal">Cancelar</button>
+                <a href="{{route('aluno.delete',$aluno->id)}}" class="btn-modal-delete btn">Deletar</a>
+            </div>
+        </div>
         </div>
     </div>
 </div>
