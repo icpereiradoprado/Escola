@@ -1,6 +1,7 @@
 @extends('layouts.default')
 
 @section('contents')
+@if (session('logado') != null)
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -67,4 +68,8 @@
         </div>
     </div>
 </div>
+@else
+ {{redirect()->route('aluno.index')}}
+@endif
+
 @endsection

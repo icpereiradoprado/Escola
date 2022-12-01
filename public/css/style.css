@@ -73,3 +73,33 @@
     border-radius: 20px;
     font-size: 20px;
 }
+
+.cadastrar:hover{
+    background-color: rgb(255, 251, 251);
+}
+
+.color-white{
+    color: white;
+}
+
+.top-15{
+    top: 15%;
+}
+
+.top-37{
+    top: 37%;
+}
+
+.top-65{
+    top: 65%;
+}
+
+.top-80{
+    top: 80%;
+}
+
+#errorMsg{
+    text-align: center;
+    color: red;
+    font-weight: 500;
+}

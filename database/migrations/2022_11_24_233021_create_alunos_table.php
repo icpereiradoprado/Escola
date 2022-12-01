@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('telefone',14);
             $table->string('responsavel',50);
             $table->string('turma',50);
+            $table->string('senha',10)->nullable();
             $table->timestamps();
         });
     }

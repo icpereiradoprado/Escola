@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('aluno.index');
+
+Route::post('/login',[AlunoController::class, 'login'])->name('login');
 
 Route::prefix('aluno')->group(function(){
     Route::get('',[AlunoController::class, 'index'])->name('aluno.alunos');

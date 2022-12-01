@@ -1,12 +1,13 @@
 @extends('layouts.default')
 
 @section('contents')
-    <div class="container-fluid">
-        <div class="container">
+    <div class="container-fluid h-100">
+        <div class="container h-100">
             
-                <div class="row">
-                    <div class="col-lg-6">
-                        <form action="" method="post">
+                <div class="row h-100 py-3">
+                    <div class="col-lg-6 d-flex align-items-center">
+                        <form action="{{route('login')}}" method="post" class="w-100" id="formLogin">
+                            @csrf
                             <h1 class="fw-bold text-center mt-5 mb-5">Login para a sua conta</h1>
                             <div class="d-flex w-100 align-items-center">
                                 <div class="line"></div>
@@ -14,22 +15,37 @@
                                 <div class="line"></div>
                             </div>
                             <div class="d-flex flex-column">
+                                <span id="errorMsg"></span>
                                 <input class="mt-3 mb-3 login" type="text" name="login" id="login" placeholder="RA" required>
                                 <input class="mb-3 login" type="password" name="senha" id="senha" placeholder="Senha" required>
-                                <a class="btn btn-logar w-50 m-auto" href="">Logar</a>
+                                <input type="submit" class="btn btn-logar w-50 m-auto" value="Login">
                             </div>
                         </form>
+                        @if (session('logado') != null)
+                            <input type="hidden" name="" value="{{session('logado')}}">
+                        @endif
                     </div>
                     <div class="col-lg-6">
-
-                        <div class="d-flex flex-column bg-linear-gradiente">
-                            <h1>Novo por aqui?</h1>
-                            <p>Cadastre agora mesmo !</p>
-                            <a class="cadastrar btn w-25 m-auto" href="#">Cadastrar-se</a>
+                    <div class="h-100 position-relative bg-linear-gradiente d-flex justify-content-center">
+                        <div class="d-flex flex-column align-items-center w-100 position-absolute top-37">
+                            <h1 class="m-0 color-white mb-2">Novo por aqui?</h1>
+                            <p class="m-0 color-white">Cadastre agora mesmo !</p>
                         </div>
+                        <a class="cadastrar btn w-25 m-auto position-absolute top-65" href="#">Cadastrar-se</a>
+                    </div>
+                        
                     </div>
                 </div>
                 
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        const spanErrorMsg = document.getElementById("errorMsg");
+        var form = document.getElementById("formLogin");
+        form.addEventListener('submit',function(e){
+            
+        });
+    </script>
+@endpush

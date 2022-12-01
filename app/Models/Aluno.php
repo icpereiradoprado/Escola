@@ -10,5 +10,5 @@ class Aluno extends Model
     use HasFactory;
 
     //permite salvar os dados no banco de dados
-    protected $fillable = ['nome','dtNascto','telefone','responsavel','turma'];
+    protected $fillable = ['nome','dtNascto','telefone','responsavel','turma','senha'];
 }
