@@ -31,7 +31,7 @@
                             <h1 class="m-0 color-white mb-2">Novo por aqui?</h1>
                             <p class="m-0 color-white">Cadastre agora mesmo !</p>
                         </div>
-                        <a class="cadastrar btn w-25 m-auto position-absolute top-65" href="#">Cadastrar-se</a>
+                        <a class="cadastrar btn w-25 m-auto position-absolute top-65" href="{{route('aluno.create')}}">Cadastrar-se</a>
                     </div>
                         
                     </div>

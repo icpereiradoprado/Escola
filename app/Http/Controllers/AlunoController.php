@@ -103,19 +103,18 @@ class AlunoController extends Controller
 
     public function login(Request $request){
         $hasRa = Aluno::find($request->login);
-        session(['logado'=>0]);
         if($hasRa){
             $senha = $hasRa->senha;
 
             if($request->senha == $senha){
-                session(['logado'=>1]);
-                return redirect()->route('aluno.alunos');
+                return redirect()->route('aluno.alunos',session(['logado'=>1]));
             }
-            
-            return redirect()->route('aluno.index');
+            else{
+                return redirect()->route('aluno.alunos', session(['logado'=>0]));
+            }
         }
         else{
-            return redirect()->route('aluno.index');
+            return redirect()->route('aluno.index', session(['logado'=>2]));
         }
     }
 }
