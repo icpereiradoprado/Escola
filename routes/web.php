@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    if(session('logado') == 1){
+        return view('aluno.alunos');
+    }
     return view('index');
 })->name('aluno.index');
 

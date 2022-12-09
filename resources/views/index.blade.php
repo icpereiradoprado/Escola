@@ -1,5 +1,4 @@
 @extends('layouts.default')
-
 @section('contents')
     <div class="container-fluid h-100">
         <div class="container h-100">
@@ -15,15 +14,15 @@
                                 <div class="line"></div>
                             </div>
                             <div class="d-flex flex-column">
-                                <span id="errorMsg"></span>
+                                @if (session('logado') == 0 || session('logado') == 2)
+                                    <span id="errorMsg">Usuário ou Senha inválidos</span>
+                                @else
+                                @endif
                                 <input class="mt-3 mb-3 login" type="text" name="login" id="login" placeholder="RA" required>
                                 <input class="mb-3 login" type="password" name="senha" id="senha" placeholder="Senha" required>
                                 <input type="submit" class="btn btn-logar w-50 m-auto" value="Login">
                             </div>
                         </form>
-                        @if (session('logado') != null)
-                            <input type="hidden" name="" value="{{session('logado')}}">
-                        @endif
                     </div>
                     <div class="col-lg-6">
                     <div class="h-100 position-relative bg-linear-gradiente d-flex justify-content-center">
@@ -40,12 +39,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    <script>
-        const spanErrorMsg = document.getElementById("errorMsg");
-        var form = document.getElementById("formLogin");
-        form.addEventListener('submit',function(e){
-            
-        });
-    </script>
-@endpush

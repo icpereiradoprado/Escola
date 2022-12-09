@@ -10,8 +10,9 @@
             </div>
         </div>
         <div class="py-2 border border-info">
-            <div class="col-lg-12">
-                <a class="btn btn-outline-primary" href="{{route('aluno.create')}}">Novo</a>
+            <div class="col-lg-12 d-flex justify-content-between">
+                <a class="btn btn-outline-primary size-200 " href="{{route('aluno.create')}}">Novo</a>
+                <a class="btn btn-outline-warning size-200 " href="{{route('aluno.index')}}">Home</a>
             </div>
             <div class="col-lg-12">
                 <table class="table table-striped">

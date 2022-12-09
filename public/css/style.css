@@ -103,3 +103,15 @@
     color: red;
     font-weight: 500;
 }
+
+.size-200{
+    width: 200px !important;
+    min-width: 60px !important;
+
+}
+
+@media(max-width: 991px){
+    .button-100{
+        width: 100% !important;
+    }
+}

@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aluno;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 session_start();
 class AlunoController extends Controller
 {
@@ -15,6 +16,7 @@ class AlunoController extends Controller
     {
         $alunos = Aluno::all();
         return view('aluno.alunos',['alunos'=>$alunos]);
+        //return Response::view('aluno.alunos',['alunos'=>$alunos])->header('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
     }
 
     /**
@@ -33,14 +35,16 @@ class AlunoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Response $response)
     {
+        $request->header('Cache-Control', 'no-cache, must-revalidate');
         Aluno::create([
             'nome' => $request['nome'],
             'dtNascto' => $request['dtNascto'],
             'telefone' => $request['telefone'],
             'turma' => $request['turma'],
-            'responsavel' => $request['responsavel']
+            'responsavel' => $request['responsavel'],
+            'senha' => "1234"
         ]);
         return redirect()->route('aluno.alunos');
     }
@@ -103,18 +107,22 @@ class AlunoController extends Controller
 
     public function login(Request $request){
         $hasRa = Aluno::find($request->login);
+        $retorno = 0;
         if($hasRa){
             $senha = $hasRa->senha;
 
             if($request->senha == $senha){
-                return redirect()->route('aluno.alunos',session(['logado'=>1]));
+               $retorno = 1;
+               session(['logado'=>$retorno]);
+               return redirect()->route('aluno.alunos');
             }
             else{
-                return redirect()->route('aluno.alunos', session(['logado'=>0]));
+                $retorno = 0;
             }
         }
         else{
-            return redirect()->route('aluno.index', session(['logado'=>2]));
+            $retorno = 2;
         }
+        return redirect()->route('aluno.index', session(['logado'=>$retorno]));
     }
 }
